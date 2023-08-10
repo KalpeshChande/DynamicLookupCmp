@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>No_data_found</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No_data_found</shortDescription>
+        <value>No data found</value>
+    </labels>
+    <labels>
+        <fullName>Please_wait</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Please_wait</shortDescription>
+        <value>Please_wait</value>
+    </labels>
+</CustomLabels>

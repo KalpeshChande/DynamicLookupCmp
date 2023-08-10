@@ -1,0 +1,87 @@
+<template>
+    <div class="">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_12-of-12" style="padding:0px">
+           
+            <div style=" border-radius: 5px;">
+                <div if:true={singleselectedrec}>
+                    <div class={textboxclass} style={cmpwidth}>
+                        <span class="slds-pill slds-pill_link">
+                            <a href="#" class="slds-pill__action" title={singleselectedrec} style={cmpwidth}>
+                            <span class="slds-pill__label">{singleselectedrec}</span>
+                            </a>
+                            <button class="slds-button slds-button_icon slds-button_icon slds-pill__remove" title="Remove" onclick={removeSingleHandler}>
+                            <svg class="slds-button__icon" aria-hidden="true">
+                            <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Remove</span>
+                            </button>
+                        </span>
+                    </div>
+                    </div>
+               
+
+                <div class="">
+                    <div class={hidebox}>
+                        <div if:false={hideinput} > 
+                      <input disabled={disable} style={cmpwidth} class={textboxclass} autocomplete="off" type="text"  id="searchinput" data-val="searchinput" 
+                          onkeyup={searchField} placeholder={placeholder} data-id="inputtext"
+                          onclick={searchField} onfocusout={focusOut_event}/>
+                     </div>
+                         
+                          <div if:true={requireattribute} style="color: red;">
+                              Complete this field
+                          </div>
+                       
+                </div>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+    <div if:true={flag}>
+        <div onmouseleave={mouseOut} onmouseenter={mouseIn}>
+        <div class={dropdownClass} style={cmpwidth}>
+                <ul style="background-color: #ffffff;">
+                    <template if:true={records} for:each={records} for:item="record">
+                        <li role="presentation" class="slds-listbox__item " key={record.keyfield}>
+                            <div data-val={record.keyfield} data-name={record.displayfields} onclick={setSelectedrecord}
+                                class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta slds-p-top_medium slds-p-left_small slds-p-bottom_small"
+                                role="option">
+
+                                <div class="slds-media__figure">
+                                    <lightning-icon icon-name={iconname} class="slds-icon slds-icon_small"
+                                        size="small" alternative-text="icon"></lightning-icon>
+                                </div>
+                                {record.displayfields}<br/>
+                                {record.mergeFields}
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div if:true={message} style={cmpwidth}>
+        <center>{no_data_label}</center>
+    </div>
+    
+    
+
+    <div if:true={isloading} class="spinnerlook" style={spinnerwidth}>
+        <div class="slds-spinner_container">
+        <div role="status" class="slds-spinner slds-spinner_x-small slds-spinner_brand">
+        <span class="slds-assistive-text">Loading</span>
+        <div class="slds-spinner__dot-a"></div>
+        <div class="slds-spinner__dot-b"></div>
+        </div>
+        </div>
+    </div>
+    <br/>
+    <div if:true={loadmessage} >
+        {please_wait}
+    </div>
+  
+</template>
